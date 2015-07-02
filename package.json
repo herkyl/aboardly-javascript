@@ -1,0 +1,22 @@
+{
+  "name": "aboardly-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^9.0.8",
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-watchify": "^0.5.0",
+    "watchify": "^3.2.3"
+  },
+  "dependencies": {
+    "component-cookie": "^1.1.2",
+    "xhr": "^2.0.2"
+  }
+}
