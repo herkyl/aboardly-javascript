@@ -2,7 +2,42 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script src="./build/index.js"></script>
+    <script>
+      (function () {
+        window._ab = window._ab || [];
+        window.aboardly = {};
+        var funcs = ['identify', 'event', 'auth'];
+        for (var i = 0; i < funcs.length; i++) {
+          var fn = funcs[i];
+          window.aboardly[fn] = (function (fn) {
+            return function () {
+              window._ab.push({
+                args: arguments,
+                fn: fn
+              });
+            }
+          })(fn)
+        }
+
+        var newElement = document.createElement('script')
+          , oldElement = document.getElementsByTagName('script')[0];
+        newElement.async = 1;
+        newElement.src = './build/index.js';
+        oldElement.parentNode.insertBefore(newElement, oldElement);
+      })();
+
+      aboardly.auth({
+        username: '23dc23bc',
+        password: 'e4504e92b111be45f0f9c8e46863a39b'
+      });
+
+      aboardly.identify('customer_id3', {
+        age: 30,
+        email: 'tere3@test.ee'
+      });
+
+      aboardly.event('signed_up');
+    </script>
   </head>
   <body>
 
