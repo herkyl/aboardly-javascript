@@ -3,7 +3,7 @@ var series = require('async-series');
 
 var customer
   , auth
-  , baseUrl = 'http://www.aboardly.com/api/v1/';
+  , baseUrl = 'https://www.aboardly.com/api/v1/';
 
 function customerRequest(callback) {
   xhr({
