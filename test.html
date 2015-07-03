@@ -22,18 +22,18 @@
         var newElement = document.createElement('script')
           , oldElement = document.getElementsByTagName('script')[0];
         newElement.async = 1;
-        newElement.src = 'http://aboardly.com/js/aboardly.js';
+        //newElement.src = 'http://aboardly.com/js/aboardly.js';
+        newElement.src = './build/index.js';
         oldElement.parentNode.insertBefore(newElement, oldElement);
       })();
 
-      aboardly.auth({
-        username: '23dc23bc',
-        password: 'e4504e92b111be45f0f9c8e46863a39b'
+      aboardly.auth('ffed623b', {
+        baseUrl: 'http://localhost:5200/api/v1/'
       });
 
-      aboardly.identify('customer_id3', {
+      aboardly.identify('customer_id4', {
         age: 30,
-        email: 'tere3@test.ee'
+        email: 'tere4@test.ee'
       });
 
       aboardly.event('signed_up');

@@ -12,7 +12,7 @@ function customerRequest(callback) {
     useXDR: true,
     body: JSON.stringify(customer.options),
     headers: {
-      'Authorization': 'Basic ' + btoa(auth.username + ':' + auth.password),
+      'Authorization': 'Basic ' + btoa(auth + ':jsclient'),
       'Content-Type': 'application/json'
     }
   }, callback);
@@ -24,7 +24,7 @@ function eventRequest(name, callback) {
     method: 'POST',
     useXDR: true,
     headers: {
-      'Authorization': 'Basic ' + btoa(auth.username + ':' + auth.password),
+      'Authorization': 'Basic ' + btoa(auth + ':jsclient'),
       'Content-Type': 'application/json'
     }
   }, callback);
