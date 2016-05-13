@@ -73,6 +73,10 @@ var api = {
         throw new Error(response.body);
       }
     };
+    if (typeof properties == 'function') {
+      callback = properties;
+      properties = {};
+    }
     properties = properties || {};
     eventRequest(name, properties, function (error, response, body) {
       if (response.statusCode === 400 && response.body.indexOf('Customer does not exist') > -1) {
