@@ -18,10 +18,11 @@ function customerRequest(callback) {
   }, callback);
 }
 
-function eventRequest(name, callback) {
+function eventRequest(name, properties, callback) {
   xhr({
     uri: baseUrl + 'customers/' + customer.id + '/events/' + name,
     method: 'POST',
+    body: JSON.stringify(properties),
     useXDR: true,
     headers: {
       'Authorization': 'Basic ' + btoa(auth + ':jsclient'),
@@ -64,7 +65,7 @@ var api = {
       options: options
     };
   },
-  event: function (name, callback) {
+  event: function (name, properties, callback) {
     callback = callback || function (error, response) {
       if (error) {
         throw error;
@@ -72,7 +73,8 @@ var api = {
         throw new Error(response.body);
       }
     };
-    eventRequest(name, function (error, response, body) {
+    properties = properties || {};
+    eventRequest(name, properties, function (error, response, body) {
       if (response.statusCode === 400 && response.body.indexOf('Customer does not exist') > -1) {
         eventFlowWithIdentify(name, callback);
       } else {
