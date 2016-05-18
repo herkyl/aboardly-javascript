@@ -31,7 +31,7 @@ function eventRequest(name, properties, callback) {
   }, callback);
 }
 
-function eventFlowWithIdentify(eventName, callback) {
+function eventFlowWithIdentify(eventName, eventProperties, callback) {
   series([
     function (next) {
       if (!customer) {
@@ -46,7 +46,7 @@ function eventFlowWithIdentify(eventName, callback) {
       });
     },
     function (next) {
-      eventRequest(eventName, function (error, response, body) {
+      eventRequest(eventName, eventProperties, function (error, response, body) {
         callback(error, response);
       });
     }
@@ -80,7 +80,7 @@ var api = {
     properties = properties || {};
     eventRequest(name, properties, function (error, response, body) {
       if (response.statusCode === 400 && response.body.indexOf('Customer does not exist') > -1) {
-        eventFlowWithIdentify(name, callback);
+        eventFlowWithIdentify(name, properties, callback);
       } else {
         callback(error, response);
       }
